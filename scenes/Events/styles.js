@@ -63,6 +63,15 @@ var styles = StyleSheet.create({
     paddingTop: 14,
     paddingBottom: 16,
   },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#bb99ff',
+    height: '80%',
+  },
+  innerContainer: {
+    alignItems: 'center',
+  },
 })
 
 module.exports = styles

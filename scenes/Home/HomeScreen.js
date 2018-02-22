@@ -51,7 +51,6 @@ export default class HomeScreen extends Component {
       snap.forEach((child) => {
         items.push({
           title:child.val().title,
-          desc: child.val().desc,
           liked: child.val().liked,
           _key: child.key
         });
@@ -72,8 +71,6 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
 
-        {/* <StatusBar title="Grocery List" /> */}
-
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this._renderItem.bind(this)}
@@ -81,6 +78,7 @@ export default class HomeScreen extends Component {
           style={styles.listview}/>
 
         <ActionButton onPress={this._addItem.bind(this)} title="Submit a Post" />
+      
 
       </View>
     )
@@ -96,7 +94,6 @@ export default class HomeScreen extends Component {
           text: 'Post',
           onPress: (text) => {
             this.itemsRef.push({ title: text, liked: false })
-            //this.itemsRef.push({ desc: text })
           }
         },
       ],
@@ -133,3 +130,4 @@ export default class HomeScreen extends Component {
 
   
 
+// <ActionButton onPress={this._addItem.bind(this)} title="Submit a Post" /> 

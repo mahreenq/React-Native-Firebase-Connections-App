@@ -4,6 +4,7 @@ import HomeScreen from '../scenes/Home/HomeScreen.js';
 import ProfileScreen from '../scenes/Profile/ProfileScreen.js';
 import EventsScreen from '../scenes/Events/EventsScreen.js';
 import ConnectionsScreen from '../scenes/Connections/ConnectionsScreen.js';
+import EventFormScreen from '../scenes/EventForm/EventFormScreen.js';
 
 
   export default  Router = createRouter(() => ({
@@ -12,4 +13,5 @@ import ConnectionsScreen from '../scenes/Connections/ConnectionsScreen.js';
     profile: () => ProfileScreen ,
     events:() => EventsScreen,
     connections: () => ConnectionsScreen,
+    eventForm:() => EventFormScreen,
   }));
