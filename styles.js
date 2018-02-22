@@ -69,6 +69,31 @@ var styles = StyleSheet.create({
     paddingTop: 14,
     paddingBottom: 16,
   },
+  eventsli:{
+    backgroundColor: '#fff',
+    borderBottomColor: '#eee',
+    borderColor: 'transparent',
+    borderWidth: 1,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 14,
+    paddingBottom: 16,
+    flex:1,
+    flexDirection:'row',
+  },
+  eventsliText:{
+    color: '#333',
+    fontSize: 16,
+    flex:2
+  },
+  eventDateTime:{
+    color: 'grey',
+    fontSize:11,
+    paddingRight:5,
+  },
+  eventDescText:{
+    fontSize:13,
+  }
 })
 
 module.exports = styles

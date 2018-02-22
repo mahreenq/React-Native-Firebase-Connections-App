@@ -79,13 +79,14 @@ export default class EventsScreen extends Component {
 
      handleSubmit = () => {
         // event.preventDefault();
-        this.itemsRef.push({title: this.state.title , desc:this.state.desc, date:this.state.date, time:this.state.time, location:this.state.location});
+        this.itemsRef.push({title: this.state.title , desc:this.state.desc, date:this.state.date, time:this.state.time, location:this.state.location, rsvp: false});
         this.setState({modalVisible:false});
       }
+     
+
       
     
       render() {
-        console.log(this.state);
         return (
           <View style={styles.container}>
 
@@ -99,8 +100,8 @@ export default class EventsScreen extends Component {
               <Modal
               visible={this.state.modalVisible}
               animationType={'slide'}
-              onRequestClose={() => this.closeModal()}
-          >
+              onRequestClose={() => this.closeModal()}>
+
             <View style={styles.modalContainer}>
               <View style={styles.innerContainer}>
               <View >
@@ -121,6 +122,7 @@ export default class EventsScreen extends Component {
                     style={{ height: 150, width:300, margin:10,padding:5,  borderWidth: 1, 
                         borderColor: "rgba(0,0,0,0.5)"}}
                     placeholder={'Description'}
+                    multiline={true}
                     placeholderTextColor={"#ffffff"}
                     name="desc"
                     ref="desc"
@@ -131,7 +133,7 @@ export default class EventsScreen extends Component {
                     <TextInput
                     style={{ height: 30, width:300, margin:10,padding:5,  borderWidth: 1, 
                         borderColor: "rgba(0,0,0,0.5)"}}
-                    placeholder={'Date'}
+                    placeholder={'Date (ex. March 3rd)'}
                     placeholderTextColor={"#ffffff"}
                     name="date"
                     ref="date"
@@ -142,7 +144,7 @@ export default class EventsScreen extends Component {
                     <TextInput
                     style={{ height: 30, width:300,margin:10,padding:5,  borderWidth: 1, 
                         borderColor: "rgba(0,0,0,0.5)"}}
-                    placeholder={'Time'}
+                    placeholder={'Time (ex. 5:00pm)'}
                     placeholderTextColor={"#ffffff"}
                     name="time"
                     ref="time"
@@ -163,18 +165,10 @@ export default class EventsScreen extends Component {
                     />
             
             </View>
-                
-                <Button
-                    onPress={() => this.closeModal()}
-                    title="Cancel"
-                >
-                </Button>
 
-                <Button
-                    onPress={this.handleSubmit.bind(this)}
-                    title="Submit"
-                >
-                </Button>
+              <Button onPress={() => this.closeModal()} title="Cancel"></Button>
+              <Button onPress={this.handleSubmit.bind(this)} title="Submit"> </Button>
+
               </View>
             </View>
           </Modal>
@@ -196,9 +190,16 @@ export default class EventsScreen extends Component {
             ]
           );
       };
+
+      const onLike = () => {
+        this.itemsRef.child(item._key).update({ 
+          rsvp: !item.rsvp
+        });
+     };
+
     
         return (
-          <EventItem item={item} onPress={onPress} />
+          <EventItem item={item} onPress={onPress} onLike={onLike} />
         );
       }
 };
