@@ -5,10 +5,12 @@ const styles = require('../styles.js')
 const { View, TouchableHighlight, Text } = ReactNative;
 
 export default class ListItem extends Component {
+
   
   render() {
+
+
     item= this.props.item;
-    console.log(this.props.item.rsvp);
     return (
       <TouchableHighlight >
         <View style={styles.eventsli}>
@@ -20,6 +22,7 @@ export default class ListItem extends Component {
                 <Text style={styles.eventDateTime}>Time: {item.time}</Text>
               </View>
             <Text style={styles.eventDateTime}>Location: {item.location}</Text>
+            <Text style={styles.eventDateTime}>Invited by:{item.invitedby} </Text>
           </View>
 
 

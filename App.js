@@ -49,16 +49,27 @@ componentWillUnmount() {
 
 
 render() {
+//  console.log(firebase.auth().currentUser.displayName)
+
+// firebase.auth().onAuthStateChanged(function(user) {
+//   if (user) {
+//     console.log(firebase.auth().currentUser.displayName);
+//   } else {
+//     console.log('no user');
+//   }
+// });
+  currentUser=firebase.auth().currentUser;
 
     // The application is initialising
     if (this.state.loading) return <Text> LOADING... </Text>;
     // The user is an Object, so they're logged in
     if (this.state.user) return(
-      <NavigationProvider router ={Router}  >
+      <NavigationProvider router ={Router} currentUser={currentUser}  >
             <StackNavigation  
             id="root"
             navigatorUID="root" 
-            initialRoute={Router.getRoute('layout')} />
+            initialRoute={Router.getRoute('layout')}
+            currentUser={currentUser} />
         </NavigationProvider>
     ) ;
     // The user is null, so they're logged out

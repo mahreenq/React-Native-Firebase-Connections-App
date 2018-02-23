@@ -6,9 +6,11 @@ import {
 import firebaseApp from '../../firebase/firebase';
 import styles from './styles';
 
-import StatusBar from '../../components/StatusBar';
+//import StatusBar from '../../components/StatusBar';
 import ActionButton from '../../components/ActionButton';
 import EventItem from '../../components/EventItem';
+
+//import firebase from '../../firebase/firebase';
 
 export default class EventsScreen extends Component {
     static route = {
@@ -26,6 +28,7 @@ export default class EventsScreen extends Component {
           time:'',
           location:'',
           rsvp:'',
+          invitedby:'',
           modalVisible: false,
           dataSource: new ListView.DataSource({
             rowHasChanged: (row1, row2) => row1 !== row2,
@@ -51,13 +54,16 @@ export default class EventsScreen extends Component {
               time: child.val().time,
               location: child.val().location,
               rsvp: child.val().rsvp,
+              invitedby: child.val().invitedby,
               _key: child.key
             });
           });
     
           this.setState({
             dataSource: this.state.dataSource.cloneWithRows(events)
+            
           });
+          
     
         });
       }
@@ -74,16 +80,18 @@ export default class EventsScreen extends Component {
         this.setState({modalVisible:false});
       }
 
+       
      handleSubmit = () => {
         // event.preventDefault();
-        this.itemsRef.push({title: this.state.title , desc:this.state.desc, date:this.state.date, time:this.state.time, location:this.state.location, rsvp: false});
-        this.setState({modalVisible:false});
+            this.itemsRef.push({title: this.state.title , desc:this.state.desc, date:this.state.date, time:this.state.time, location:this.state.location, invitedby:firebaseApp.auth().currentUser.displayName,  rsvp: false});
+            this.setState({modalVisible:false}); 
       }
      
 
       
     
       render() {
+        
         return (
           <View style={styles.container}>
             <ListView
@@ -186,7 +194,7 @@ export default class EventsScreen extends Component {
       };
     
         return (
-          <EventItem item={item} onPress={onPress} onLike={onLike} />
+          <EventItem item={item}  onPress={onPress} onLike={onLike} />
         );
       }
 };
