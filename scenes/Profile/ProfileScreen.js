@@ -15,7 +15,7 @@ export default class Profile extends Component {
         }
       }
       
-      signOutUser = async () => {
+    signOutUser = async () => {
         try {
             await firebase.auth().signOut();
         } catch (e) {
@@ -24,11 +24,7 @@ export default class Profile extends Component {
     }
     
     render() { 
-
         var user = firebase.auth().currentUser;
-        console.log(user);
-
-
         return (
             <View style={styles.profileContainer}>
             <View style={styles.innerProfileContainer}>

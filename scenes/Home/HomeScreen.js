@@ -54,6 +54,7 @@ export default class HomeScreen extends Component {
           title:child.val().title,
           liked: child.val().liked,
           postedby: child.val().postedby,
+          likedby: child.val().likedby,
           _key: child.key
         });
       });
@@ -70,6 +71,7 @@ export default class HomeScreen extends Component {
   }
 
   render() {
+    //console.log(firebaseApp.auth().currentUser);
     return (
       <View style={styles.container}>
 
@@ -117,14 +119,23 @@ export default class HomeScreen extends Component {
     };
 
     const onLike = () => {
-      this.itemsRef.child(item._key).update({ 
-        liked: !item.liked
+      this.getRef().child('items').child(item._key).child('likedby').push({ 
+        likedby: firebaseApp.auth().currentUser.email
+      })
+    };
+
+  const onUnlike = () => {
+    let ref = firebase.database().ref('items').child(item._key).child('likedby');
+      ref.orderByChild('likedby').equalTo(currentUser.email).once('value', snapshot => {
+        let updates = {};
+        snapshot.forEach(child => updates[child.key] = null);
+        ref.update(updates);
       });
-   };
+    };
     
 
     return (
-      <PostItem item={item} onPress={onPress} onLike={onLike}  />
+      <PostItem item={item} onPress={onPress} onUnlike={onUnlike} onLike={onLike}  />
     );
   }
     

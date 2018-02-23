@@ -82,9 +82,10 @@ var styles = StyleSheet.create({
     flexDirection:'row',
   },
   eventsliText:{
-    color: '#333',
+    color: '#1f7a7a',
     fontSize: 16,
-    flex:2
+    flex:2,
+    paddingBottom: 2,
   },
   eventDateTime:{
     color: 'grey',
