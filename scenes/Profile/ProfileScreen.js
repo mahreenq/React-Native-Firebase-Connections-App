@@ -10,19 +10,29 @@ import {
     ActivityIndicator
   } from 'react-native';
 
+import firebase from '../../firebase/firebase';
+
 
 export default class Profile extends Component {
     static route = {
         navigationBar: {
           title: 'Profile',
-          backgroundColor: 'red',
+          backgroundColor: '#33cccc',
         }
       }
+
+      signOutUser = async () => {
+        try {
+            await firebase.auth().signOut();
+        } catch (e) {
+            console.log(e);
+        }
+    }
     
     render() { 
         return (
-            <Text>PROFILE</Text>
-        );
+            <Text onPress={() => this.signOutUser()} >PROFILE</Text>
+        ); 
     };
 };
 

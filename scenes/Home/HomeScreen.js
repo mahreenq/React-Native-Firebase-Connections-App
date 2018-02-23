@@ -25,6 +25,7 @@ export default class HomeScreen extends Component {
     static route = {
         navigationBar: {
           title: 'Posts',
+          backgroundColor: '#33cccc',
         }
       }
   constructor(props) {

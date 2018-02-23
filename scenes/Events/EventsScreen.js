@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Platform, StyleSheet, Text, TextInput, View,Button, Image, ScrollView, ActivityIndicator, AppRegistry, ListView, TouchableHighlight, AlertIOS, Modal } from 'react-native';
+import {FlatList, Platform, StyleSheet, Text, TextInput, View,Button, Image, ScrollView, ActivityIndicator, AppRegistry, ListView, TouchableHighlight, TouchableOpacity, AlertIOS, Modal } from 'react-native';
 import {
   StackNavigator,
 } from 'react-navigation';
@@ -14,7 +14,7 @@ export default class EventsScreen extends Component {
     static route = {
         navigationBar: {
           title: 'Events',
-          backgroundColor: 'red',
+          backgroundColor: '#33cccc',
         }
       }
       constructor(props) {
@@ -73,9 +73,6 @@ export default class EventsScreen extends Component {
       closeModal() {
         this.setState({modalVisible:false});
       }
-      _goToForm = () => {
-        this.props.navigator.push(Router.getRoute('eventForm'));
-      }
 
      handleSubmit = () => {
         // event.preventDefault();
@@ -89,8 +86,6 @@ export default class EventsScreen extends Component {
       render() {
         return (
           <View style={styles.container}>
-
-    
             <ListView
               dataSource={this.state.dataSource}
               renderRow={this._renderItem.bind(this)}
@@ -102,78 +97,72 @@ export default class EventsScreen extends Component {
               animationType={'slide'}
               onRequestClose={() => this.closeModal()}>
 
-            <View style={styles.modalContainer}>
-              <View style={styles.innerContainer}>
-              <View >
-                <Text style={{color: '#ffffff', fontSize:30, textAlign:'center',}}> Create an Event! </Text>
-                <TextInput
-                    style={{ height: 30, width:300, margin:10, padding:5, borderWidth: 1, 
-                        borderColor: "rgba(0,0,0,0.5)"}}
-                    placeholder={'Title'}
-                    placeholderTextColor={"#ffffff"}
-                    name="title"
-                    ref="title"
-                    onChangeText={text => {
-                      this.setState({ title: text });
-                    }}
-              
-                    />
-                    <TextInput
-                    style={{ height: 150, width:300, margin:10,padding:5,  borderWidth: 1, 
-                        borderColor: "rgba(0,0,0,0.5)"}}
-                    placeholder={'Description'}
-                    multiline={true}
-                    placeholderTextColor={"#ffffff"}
-                    name="desc"
-                    ref="desc"
-                    onChangeText={text => {
-                      this.setState({ desc: text });
-                    }}
-                    />
-                    <TextInput
-                    style={{ height: 30, width:300, margin:10,padding:5,  borderWidth: 1, 
-                        borderColor: "rgba(0,0,0,0.5)"}}
-                    placeholder={'Date (ex. March 3rd)'}
-                    placeholderTextColor={"#ffffff"}
-                    name="date"
-                    ref="date"
-                    onChangeText={text => {
-                      this.setState({ date: text });
-                    }}
-                    />
-                    <TextInput
-                    style={{ height: 30, width:300,margin:10,padding:5,  borderWidth: 1, 
-                        borderColor: "rgba(0,0,0,0.5)"}}
-                    placeholder={'Time (ex. 5:00pm)'}
-                    placeholderTextColor={"#ffffff"}
-                    name="time"
-                    ref="time"
-                    onChangeText={text => {
-                      this.setState({ time: text });
-                    }}
-                    />
-                    <TextInput
-                    style={{ height: 30, width:300,margin:10,padding:5,  borderWidth: 1, 
-                        borderColor: "rgba(0,0,0,0.5)"}}
-                    placeholder={'Location'}
-                    placeholderTextColor={"#ffffff"}
-                    name="location"
-                    ref="location"
-                    onChangeText={text => {
-                      this.setState({ location: text });
-                    }}
-                    />
-            
+                <View style={styles.modalContainer}>
+                  <View style={styles.innerContainer}>
+                    <View>
+                      <Text style={{color: '#ffffff', fontSize:30, textAlign:'center',}}> Create an Event! </Text>
+                          <TextInput
+                          style={styles.regInput}
+                          placeholder={'Title'}
+                          placeholderTextColor={"#196666"}
+                          name="title"
+                          ref="title"
+                          onChangeText={text => {
+                            this.setState({ title: text });
+                          }}
+                  
+                          />
+                          <TextInput
+                          style={styles.multiInput}
+                          placeholder={'Description'}
+                          multiline={true}
+                          placeholderTextColor={"#196666"}
+                          name="desc"
+                          ref="desc"
+                          onChangeText={text => {
+                            this.setState({ desc: text });
+                          }}
+                          />
+                          <TextInput
+                          style={styles.regInput}
+                          placeholder={'Date (ex. March 3rd)'}
+                          placeholderTextColor={"#196666"}
+                          name="date"
+                          ref="date"
+                          onChangeText={text => {
+                            this.setState({ date: text });
+                          }}
+                          />
+                          <TextInput
+                          style={styles.regInput}
+                          placeholder={'Time (ex. 5:00pm)'}
+                          placeholderTextColor={"#196666"}
+                          name="time"
+                          ref="time"
+                          onChangeText={text => {
+                            this.setState({ time: text });
+                          }}
+                          />
+                          <TextInput
+                          style={styles.regInput}
+                          placeholder={'Location'}
+                          placeholderTextColor={"#196666"}
+                          name="location"
+                          ref="location"
+                          onChangeText={text => {
+                            this.setState({ location: text });
+                          }}
+                          />
+                    </View>
+                <View style={{flex:1, flexDirection:'row',}}>
+                  <Button onPress={() => this.closeModal()} color="white"  title="Cancel" />
+                  <Button onPress={this.handleSubmit.bind(this)} color="white"  title="Submit" />
+                </View>
             </View>
-
-              <Button onPress={() => this.closeModal()} title="Cancel"></Button>
-              <Button onPress={this.handleSubmit.bind(this)} title="Submit"> </Button>
-
-              </View>
-            </View>
-          </Modal>
+          </View>
+        </Modal>
     
-            <ActionButton  onPress={() => this.openModal()} title="Invite your connections to an event!" />
+            <ActionButton onPress={() => this.openModal()} title="Invite your connections to an event!" />
     
           </View>
         )
@@ -190,13 +179,11 @@ export default class EventsScreen extends Component {
             ]
           );
       };
-
-      const onLike = () => {
-        this.itemsRef.child(item._key).update({ 
-          rsvp: !item.rsvp
-        });
-     };
-
+        const onLike = () => {
+          this.itemsRef.child(item._key).update({ 
+            rsvp: !item.rsvp
+          });
+      };
     
         return (
           <EventItem item={item} onPress={onPress} onLike={onLike} />

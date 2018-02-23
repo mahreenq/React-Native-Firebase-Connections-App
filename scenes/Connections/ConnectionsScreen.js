@@ -15,7 +15,7 @@ export default class ConnectionsScreen extends Component {
     static route = {
         navigationBar: {
           title: 'Connections',
-          backgroundColor: 'pink',
+          backgroundColor: '#33cccc',
         }
       }
     

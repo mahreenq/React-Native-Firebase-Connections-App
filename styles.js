@@ -1,12 +1,12 @@
 const React = require('react-native')
 const {StyleSheet} = React
 const constants = {
-  actionColor: '#24CE84'
+  actionColor: '#33cccc'
 };
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#d6f5f5',
     flex: 1,
   },
   listview: {
@@ -14,7 +14,7 @@ var styles = StyleSheet.create({
   },
   li: {
     backgroundColor: '#fff',
-    borderBottomColor: '#eee',
+    borderBottomColor: '#d6f5f5',
     borderColor: 'transparent',
     borderWidth: 1,
     paddingLeft: 16,
@@ -71,7 +71,7 @@ var styles = StyleSheet.create({
   },
   eventsli:{
     backgroundColor: '#fff',
-    borderBottomColor: '#eee',
+    borderBottomColor: '#d6f5f5',
     borderColor: 'transparent',
     borderWidth: 1,
     paddingLeft: 16,
@@ -93,7 +93,30 @@ var styles = StyleSheet.create({
   },
   eventDescText:{
     fontSize:13,
-  }
+  },
+  loginInputStyle: {
+    paddingRight: 5,
+    paddingLeft: 5,
+    paddingBottom: 2,
+    color: 'black',
+    fontSize: 18,
+    fontWeight: '200',
+    flex: 1,
+    height: 150,
+    width: 300,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginLeft:20,
+},
+loginContainer: {
+    height: 60,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    width: '100%',
+    borderColor: 'gray',
+    margin:15,
+
+},
 })
 
 module.exports = styles

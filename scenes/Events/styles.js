@@ -6,7 +6,7 @@ const constants = {
 
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#d6f5f5',
     flex: 1,
   },
   listview: {
@@ -14,7 +14,7 @@ var styles = StyleSheet.create({
   },
   li: {
     backgroundColor: '#fff',
-    borderBottomColor: '#eee',
+    borderBottomColor: '#d6f5f5',
     borderColor: 'transparent',
     borderWidth: 1,
     paddingLeft: 16,
@@ -66,13 +66,34 @@ var styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#bb99ff',
+    backgroundColor: '#33cccc',
     height: '80%',
   },
   innerContainer: {
     alignItems: 'center',
   },
+  regInput:{
+    height: 30, 
+    width:300, 
+    margin:10, 
+    padding:5, 
+    borderWidth: 1, 
+    borderColor: "rgba(0,0,0,0.5)",
+    backgroundColor:'#adebeb',
+  },
+  multiInput:{
+    height: 150, 
+    width:300, 
+    margin:10,
+    padding:5,  
+    borderWidth: 1, 
+    borderColor: "rgba(0,0,0,0.5)", 
+    backgroundColor:'#adebeb',
+
+  },
+
 })
 
 module.exports = styles
 module.exports.constants = constants;
+
