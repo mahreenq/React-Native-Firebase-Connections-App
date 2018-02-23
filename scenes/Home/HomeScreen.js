@@ -53,6 +53,7 @@ export default class HomeScreen extends Component {
         items.push({
           title:child.val().title,
           liked: child.val().liked,
+          postedby: child.val().postedby,
           _key: child.key
         });
       });
@@ -94,7 +95,7 @@ export default class HomeScreen extends Component {
         {
           text: 'Post',
           onPress: (text) => {
-            this.itemsRef.push({ title: text, liked: false })
+            this.itemsRef.push({ title: text, liked: false, postedby:firebaseApp.auth().currentUser.displayName })
           }
         },
       ],

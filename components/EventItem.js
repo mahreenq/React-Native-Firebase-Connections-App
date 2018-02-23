@@ -8,16 +8,15 @@ export default class ListItem extends Component {
 
   
   render() {
-
-
     item= this.props.item;
+    user= firebaseApp.auth().currentUser.displayName;
     return (
       <TouchableHighlight >
         <View style={styles.eventsli}>
           <View style={{flex:4}}>
             <Text style={styles.eventsliText}>{item.title}</Text>
             <Text style={styles.eventDescText}>{item.desc}</Text>
-              <View style={{ flex:1, flexDirection:'row',}}>
+              <View style={{ flex:1, flexDirection:'row', paddingTop:4}}>
                 <Text style={styles.eventDateTime}>Date: {item.date}</Text>
                 <Text style={styles.eventDateTime}>Time: {item.time}</Text>
               </View>
@@ -30,9 +29,11 @@ export default class ListItem extends Component {
         <View style={{flexDirection: 'row', flexDirection: 'row', alignItems:'center'}}>
           {this.props.item.rsvp === true?  
           <Icon onPress={this.props.onLike}  name='checkmark' color="#00e600" style={{padding:5}}/> : 
-          <Text onPress={this.props.onLike}> RSVP </Text>
+          <Text onPress={this.props.onLike} style={{color:'#1f7a7a', padding:1}}> RSVP </Text>
         }
-          <Icon onPress={this.props.onPress} name='close' style={{padding:5}} />
+          {user === item.invitedby ?
+          <Icon onPress={this.props.onPress} name='close' style={{padding:5}} /> : null }
+
           </View>
         </View>
       </TouchableHighlight>
