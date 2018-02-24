@@ -2,10 +2,12 @@
 <p>This is a social media mobile application built using React Native.</p>
 <br>
 <br>
-<p>The current version of the app allows registered users to submit posts and ideas for events </p>
-<p>Other registered users can 'like' posts and 'RSVP' to events.</p>
-<p>Logic is added so only the author of posts and events can delete them.</p>
+
+<p>The current version of the app allows registered users to submit posts and ideas for events. Other registered users can 'like' posts and 'RSVP' to events. Logic is added so only the author of posts and events can delete them.</p>
 <br>
-<p> Firebase is the platform used for authentication and storing data.</p>
-<p> Profile images are rendered using Gravatar</p>
+
+<p> Firebase is the platform used for authentication and storing data.Profile images are rendered using Gravatar</p>
+<p> To view, download, 'react-native run-ios'.</p>
+<br>
+<br>
 <img src="assets/screenshots/connectionsscreenshots.jpg">
