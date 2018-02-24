@@ -7,39 +7,74 @@ import styles from './styles.js';
 
 
 class SignInForm extends Component {
-    state = {   email: '', 
-                password: '', 
-                error: '', 
-                loading: false,
-                modalVisible: false,
-            };
+
+    constructor(props) {
+        super(props);
+        this.state = {   
+            email: '', 
+            password: '', 
+            error: '', 
+            loading: false,
+            modalVisible: false,
+            dataSource:[],
+        };
+        this.itemsRef = this.getRef().child('users');
+      }
+
+    getRef() {
+        return firebaseApp.database().ref();
+    }
+
+    listenForItems(itemsRef) {
+        itemsRef.on('value', (snap) => {
+            var users = [];
+            snap.forEach((child) => {
+            users.push({
+                name: child.val().name,
+                email: child.val().email,
+                _key: child.key
+                });
+            });
+        this.setState({dataSource: this.state.dataSource});
+        });
+    }   
+              
+    componentDidMount() {
+        this.listenForItems(this.itemsRef);
+    }
 
     onSignInPress() {
         this.setState({ error: '', loading: true });
         const { email, password } = this.state;
                 firebase.auth().signInWithEmailAndPassword(email, password)
-                    .then(() => { this.setState({ error: '', loading: false }); })
-                    .catch(() => {
-                                this.setState({ error: 'Authentication failed.', loading: false });
+                .then(() => { this.setState({ error: '', loading: false }); })
+                .catch(() => {
+                this.setState({ error: 'Authentication failed.', loading: false });
             });
     }
 
     onRegisterPress(){
         this.setState({ error: '', loading: true });
         const { email, password} = this.state;
-                        firebase.auth().createUserWithEmailAndPassword(email, password)
-                            .then((success) => { success.updateProfile({displayName: this.state.name}) && this.setState({ error: '', loading: false }); })
-                            .catch(() => {
-                                this.setState({ error: 'Authentication failed.', loading: false });
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then((success) => { success.updateProfile({displayName: this.state.name}) 
+                     this.setState({ error: '', loading: false })
+                     this.itemsRef.push({
+                        name: this.state.name,
+                        email: this.state.email,
+                      });
+                })
+                    .catch(() => {
+                    this.setState({ error: 'Authentication failed.', loading: false });
                     });
-    }
+        }
 
     renderButtonOrLoading() {
         if (this.state.loading) {
             return <View><Text> LOADING... </Text></View>
         }
         return <Button onPress={this.onSignInPress.bind(this)} title="Log in" />;
-    }
+        }
     
     openModal() {
         this.setState({modalVisible:true});
@@ -52,7 +87,6 @@ class SignInForm extends Component {
     render() {
         return (
             <View style={styles.logInContainer}>
-
                 <Text style={{fontSize:40, color:'#2eb8b8', paddingBottom:30,}}> CONNECTIONS </Text>
 
                 <TextFieldInput
@@ -101,10 +135,9 @@ class SignInForm extends Component {
                     value={this.state.password}
                     onChangeText={password => this.setState({ password })}
                     />
-                    
 
-                <Button onPress={() => this.closeModal()} color="blue"  title="Cancel" />
-                <Button onPress={this.onRegisterPress.bind(this)} color="blue"  title="Submit" />
+                    <Button onPress={() => this.closeModal()} color="blue"  title="Cancel" />
+                    <Button onPress={this.onRegisterPress.bind(this)} color="blue"  title="Submit" />
 
                 </Modal>
             </View>
@@ -112,4 +145,3 @@ class SignInForm extends Component {
     }
 }
 export default SignInForm;
-

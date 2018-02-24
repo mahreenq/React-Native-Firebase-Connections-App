@@ -2,24 +2,12 @@ import React, {Component} from 'react';
 import {FlatList, Platform, StyleSheet, Text, View, Image, ScrollView, ActivityIndicator, AppRegistry, ListView, TouchableHighlight, AlertIOS } from 'react-native';
 import { createRouter, NavigationProvider, StackNavigation, } from '@expo/ex-navigation';
 import ProfileScreen from '../Profile/ProfileScreen';
-
-import * as firebase from 'firebase';
-import styles from './styles';
-
 import StatusBar from '../../components/StatusBar';
 import ActionButton from '../../components/ActionButton';
 import PostItem from '../../components/PostItem';
-
+import styles from './styles'
 import firebaseApp from '../../firebase/firebase';
 
-//Initialize Firebase
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAi5M3MW-nPAEx0NYuHNKg45GwE3G6qR8k",
-//   authDomain: "connections-1887f.firebaseapp.com",
-//   databaseURL: "https://connections-1887f.firebaseio.com",
-//   storageBucket: "connections-1887f.appspot.com" 
-// };
-// const firebaseApp = firebase.initializeApp(firebaseConfig)
   
 export default class HomeScreen extends Component {
   static route = {
@@ -44,8 +32,6 @@ export default class HomeScreen extends Component {
 
   listenForItems(itemsRef) {
     itemsRef.on('value', (snap) => {
-
-      // get children as an array
       var items = [];
       snap.forEach((child) => {
         items.push({
@@ -126,14 +112,8 @@ export default class HomeScreen extends Component {
     });
   };
     
-
     return (
       <PostItem item={item} onPress={onPress} onUnlike={onUnlike} onLike={onLike}  />
     );
-  }
-    
-  }
-
-  
-
-// <ActionButton onPress={this._addItem.bind(this)} title="Submit a Post" /> 
+  }    
+}

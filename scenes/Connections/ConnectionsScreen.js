@@ -18,8 +18,13 @@ export default class ConnectionsScreen extends Component {
           backgroundColor: '#33cccc',
         }
       }
+
+      
+      
     
     render() { 
+
+
         return (
             <Text>Connections</Text>
         );
