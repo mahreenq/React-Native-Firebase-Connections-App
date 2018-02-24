@@ -12,6 +12,7 @@ export default class HomeScreen extends Component {
       navigationBar: {
         title: 'Posts',
         backgroundColor: '#33cccc',
+        tintColor: 'white',
       }
     }
   constructor(props) {

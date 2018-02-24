@@ -10,6 +10,7 @@ export default class ConnectionsScreen extends Component {
         navigationBar: {
           title: 'Connections',
           backgroundColor: '#33cccc',
+          tintColor: 'white',
         }
       }
     constructor(props) {

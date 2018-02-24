@@ -10,6 +10,7 @@ export default class Profile extends Component {
         navigationBar: {
           title: 'Profile',
           backgroundColor: '#33cccc',
+          tintColor: 'white',
         }
       }
     signOutUser = async () => {

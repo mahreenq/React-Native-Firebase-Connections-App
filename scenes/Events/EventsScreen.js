@@ -12,6 +12,7 @@ export default class EventsScreen extends Component {
         navigationBar: {
           title: 'Events',
           backgroundColor: '#33cccc',
+          tintColor: 'white',
         }
       }
       constructor(props) {
