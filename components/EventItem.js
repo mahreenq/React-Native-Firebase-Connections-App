@@ -10,6 +10,18 @@ export default class ListItem extends Component {
   render() {
     item= this.props.item;
     user= firebaseApp.auth().currentUser.displayName;
+    userEmail = firebaseApp.auth().currentUser.email;
+
+    var rsvp = item.rsvpby ? Object.values(item.rsvpby).map((project)=>{
+      return project.rsvpby;
+    }) : [];
+
+    function isInArray(rsvp, userEmail) {
+      return rsvp.indexOf(userEmail.toLowerCase()) > -1;
+    }
+    inArray = isInArray(rsvp, userEmail);
+
+
     return (
       <TouchableHighlight >
         <View style={styles.eventsli}>
@@ -27,9 +39,10 @@ export default class ListItem extends Component {
 
 
         <View style={{flexDirection: 'row', flexDirection: 'row', alignItems:'center'}}>
-          {this.props.item.rsvp === true?  
-          <Icon onPress={this.props.onLike}  name='checkmark' color="#00e600" style={{padding:5}}/> : 
-          <Text onPress={this.props.onLike} style={{color:'#1f7a7a', padding:1}}> RSVP </Text>
+        <Text style={{color:'#1f7a7a' , fontSize:11, paddingLeft:3}}> {rsvp? rsvp.length : '0' } </Text>
+        { inArray ?
+          <Icon onPress={this.props.onUnRsvp}  name='checkmark' color="#00e600" style={{padding:5}}/> : 
+          <Text onPress={this.props.onRsvp} style={{color:'#1f7a7a', padding:1}}> RSVP </Text>
         }
           {user === item.invitedby ?
           <Icon onPress={this.props.onPress} name='close' style={{padding:5}} /> : null }

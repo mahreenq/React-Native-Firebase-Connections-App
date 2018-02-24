@@ -22,12 +22,12 @@ import firebaseApp from '../../firebase/firebase';
 // const firebaseApp = firebase.initializeApp(firebaseConfig)
   
 export default class HomeScreen extends Component {
-    static route = {
-        navigationBar: {
-          title: 'Posts',
-          backgroundColor: '#33cccc',
-        }
+  static route = {
+      navigationBar: {
+        title: 'Posts',
+        backgroundColor: '#33cccc',
       }
+    }
   constructor(props) {
     super(props);
     this.state = {
@@ -36,8 +36,6 @@ export default class HomeScreen extends Component {
       })
     };
     this.itemsRef = this.getRef().child('items');
-
-
   }
 
   getRef() {
@@ -62,7 +60,6 @@ export default class HomeScreen extends Component {
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(items)
       });
-
     });
   }
 
@@ -74,16 +71,12 @@ export default class HomeScreen extends Component {
     //console.log(firebaseApp.auth().currentUser);
     return (
       <View style={styles.container}>
-
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this._renderItem.bind(this)}
           enableEmptySections={true}
           style={styles.listview}/>
-
         <ActionButton onPress={this._addItem.bind(this)} title="Submit a Post" />
-      
-
       </View>
     )
   }
@@ -118,20 +111,20 @@ export default class HomeScreen extends Component {
       );
     };
 
-    const onLike = () => {
-      this.getRef().child('items').child(item._key).child('likedby').push({ 
-        likedby: firebaseApp.auth().currentUser.email
-      })
-    };
+  const onLike = () => {
+    this.getRef().child('items').child(item._key).child('likedby').push({ 
+      likedby: firebaseApp.auth().currentUser.email
+    })
+  };
 
   const onUnlike = () => {
-    let ref = firebase.database().ref('items').child(item._key).child('likedby');
+    let ref = firebaseApp.database().ref('items').child(item._key).child('likedby');
       ref.orderByChild('likedby').equalTo(currentUser.email).once('value', snapshot => {
         let updates = {};
         snapshot.forEach(child => updates[child.key] = null);
         ref.update(updates);
-      });
-    };
+    });
+  };
     
 
     return (

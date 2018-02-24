@@ -40,7 +40,7 @@ import ConnectionsScreen from '../scenes/Connections/ConnectionsScreen';
         <TabNavigation
           id="main"
           navigatorUID="main"
-          initialTab="home">
+          initialTab="events">
           <TabItem
             id="home"
             title="Home"
@@ -100,7 +100,7 @@ import ConnectionsScreen from '../scenes/Connections/ConnectionsScreen';
       backgroundColor: 'black',
     },
     selectedTab: {
-        backgroundColor: 'black',
+        backgroundColor: '#1f7a7a',
     },
 
   });

@@ -55,16 +55,14 @@ export default class EventsScreen extends Component {
               location: child.val().location,
               rsvp: child.val().rsvp,
               invitedby: child.val().invitedby,
+              rsvpby: child.val().rsvpby,
               _key: child.key
             });
           });
     
           this.setState({
             dataSource: this.state.dataSource.cloneWithRows(events)
-            
           });
-          
-    
         });
       }
     
@@ -80,15 +78,11 @@ export default class EventsScreen extends Component {
         this.setState({modalVisible:false});
       }
 
-       
      handleSubmit = () => {
         // event.preventDefault();
             this.itemsRef.push({title: this.state.title , desc:this.state.desc, date:this.state.date, time:this.state.time, location:this.state.location, invitedby:firebaseApp.auth().currentUser.displayName,  rsvp: false});
             this.setState({modalVisible:false}); 
       }
-     
-
-      
     
       render() {
         
@@ -187,14 +181,23 @@ export default class EventsScreen extends Component {
             ]
           );
       };
-        const onLike = () => {
-          this.itemsRef.child(item._key).update({ 
-            rsvp: !item.rsvp
-          });
+      const onRsvp = () => {
+        this.getRef().child('events').child(item._key).child('rsvpby').push({ 
+          rsvpby: firebaseApp.auth().currentUser.email
+        })
+      };
+    
+      const onUnRsvp = () => {
+        let ref = firebaseApp.database().ref('events').child(item._key).child('rsvpby');
+          ref.orderByChild('rsvpby').equalTo(currentUser.email).once('value', snapshot => {
+            let updates = {};
+            snapshot.forEach(child => updates[child.key] = null);
+            ref.update(updates);
+        });
       };
     
         return (
-          <EventItem item={item}  onPress={onPress} onLike={onLike} />
+          <EventItem item={item} onPress={onPress} onRsvp={onRsvp} onUnRsvp={onUnRsvp} />
         );
       }
 };
