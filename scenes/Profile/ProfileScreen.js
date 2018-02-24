@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {  StyleSheet, Text, View, Image } from 'react-native';
-
+import {StyleSheet, Text, View } from 'react-native';
 import firebase from '../../firebase/firebase';
 import {Gravatar, GravatarApi} from 'react-native-gravatar';
 import ActionButton from '../../components/ActionButton';

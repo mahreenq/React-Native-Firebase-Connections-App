@@ -40,7 +40,7 @@ import ConnectionsScreen from '../scenes/Connections/ConnectionsScreen';
         <TabNavigation
           id="main"
           navigatorUID="main"
-          initialTab="events">
+          initialTab="connections">
           <TabItem
             id="home"
             title="Home"

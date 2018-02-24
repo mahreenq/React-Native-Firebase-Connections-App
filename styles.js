@@ -116,8 +116,29 @@ loginContainer: {
     width: '100%',
     borderColor: 'gray',
     margin:15,
-
 },
+    roundedProfileImage: {
+      width:80, 
+      height:80, 
+      borderWidth:2,
+      borderColor:'white', 
+      borderRadius:40
+    },
+    connectionsli:{
+      backgroundColor: '#2eb8b8',
+      borderBottomColor: '#fff',
+      borderTopColor: '#fff',
+      borderColor: 'transparent',
+      borderWidth: 1,
+      paddingLeft: 16,
+      paddingRight: 16,
+      paddingTop: 14,
+      paddingBottom: 16,
+      flex:1,
+      flexDirection:'row',
+      alignItems:'center',
+    },
+
 })
 
 module.exports = styles
