@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import ReactNative from 'react-native';
+import {ReactNative, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
 import {Gravatar, GravatarApi} from 'react-native-gravatar';
-const styles = require('../styles.js')
-const { View, TouchableHighlight, Text } = ReactNative;
+import styles from '../styles.js';
+
 
 export default class ConnectionItem extends Component {
 
-  
   render() {
     user= this.props.user;
     return (

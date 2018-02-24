@@ -1,6 +1,5 @@
 'use strict';
-import React, { StyleSheet,   Dimensions,} from 'react-native';
-
+import React, { StyleSheet, Dimensions,} from 'react-native';
 
 let {width, height} = Dimensions.get('window')
 

@@ -1,10 +1,8 @@
 'use strict';
-
 import React, {Component} from 'react';
-import ReactNative from 'react-native';
-const styles = require('../styles.js')
+import {ReactNative, StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import styles from '../styles.js';
 const constants = styles.constants;
-const { StyleSheet, Text, View, TouchableHighlight} = ReactNative;
 
 class ActionButton extends Component {
   render() {
@@ -20,4 +18,4 @@ class ActionButton extends Component {
   }
 }
 
-module.exports = ActionButton;
+export default ActionButton;

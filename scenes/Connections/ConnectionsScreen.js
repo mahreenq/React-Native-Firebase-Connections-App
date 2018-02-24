@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet,Text, View, ListView, } from 'react-native';
+import {StyleSheet, View, ListView, } from 'react-native';
 import ConnectionItem from '../../components/ConnectionItem';
 import styles from './styles';
 import firebaseApp from '../../firebase/firebase';

@@ -38,9 +38,7 @@ var styles = StyleSheet.create({
     borderWidth: 1, 
     borderColor: "rgba(0,0,0,0.5)", 
     backgroundColor:'#adebeb',
-
   },
-
 })
 
 module.exports = styles

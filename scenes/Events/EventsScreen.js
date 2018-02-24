@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
-import {FlatList, Platform, StyleSheet, Text, TextInput, View,Button, Image, ScrollView, ActivityIndicator, AppRegistry, ListView, TouchableHighlight, TouchableOpacity, AlertIOS, Modal } from 'react-native';
-import {
-  StackNavigator,
-} from 'react-navigation';
+import {StyleSheet, Text, TextInput, View,Button, ListView, AlertIOS, Modal } from 'react-native';
+import {StackNavigator,} from 'react-navigation';
 import firebaseApp from '../../firebase/firebase';
 import styles from './styles';
-
-//import StatusBar from '../../components/StatusBar';
 import ActionButton from '../../components/ActionButton';
 import EventItem from '../../components/EventItem';
 
-//import firebase from '../../firebase/firebase';
 
 export default class EventsScreen extends Component {
     static route = {
@@ -197,7 +192,7 @@ export default class EventsScreen extends Component {
       };
     
         return (
-          <EventItem item={item} onPress={onPress} onRsvp={onRsvp} onUnRsvp={onUnRsvp} />
+          <EventItem event={item} onPress={onPress} onRsvp={onRsvp} onUnRsvp={onUnRsvp} />
         );
       }
 };

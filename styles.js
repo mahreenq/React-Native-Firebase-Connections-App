@@ -1,10 +1,8 @@
-const React = require('react-native')
-const {StyleSheet} = React
+import React, { StyleSheet, Dimensions,} from 'react-native';
 const constants = {
-  actionColor: '#33cccc'
+  actionColor: '#24CE84'
 };
-
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: '#d6f5f5',
     flex: 1,
@@ -62,7 +60,7 @@ var styles = StyleSheet.create({
     textAlign: 'center',
   },
   action: {
-    backgroundColor: constants.actionColor,
+    backgroundColor: '#33cccc',
     borderColor: 'transparent',
     borderWidth: 1,
     paddingLeft: 16,
@@ -141,5 +139,6 @@ loginContainer: {
 
 })
 
-module.exports = styles
-module.exports.constants = constants;
+ module.exports = styles;
+ module.exports.constants = constants;
+

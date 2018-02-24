@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import {FlatList, Platform, StyleSheet, Text, View, Image, ScrollView, ActivityIndicator, AppRegistry, ListView, TouchableHighlight, AlertIOS } from 'react-native';
+import {StyleSheet, Text, View, ListView, AlertIOS } from 'react-native';
 import { createRouter, NavigationProvider, StackNavigation, } from '@expo/ex-navigation';
-import ProfileScreen from '../Profile/ProfileScreen';
-import StatusBar from '../../components/StatusBar';
 import ActionButton from '../../components/ActionButton';
 import PostItem from '../../components/PostItem';
-import styles from './styles'
+import styles from './styles';
 import firebaseApp from '../../firebase/firebase';
 
   
@@ -54,7 +52,6 @@ export default class HomeScreen extends Component {
   }
 
   render() {
-    //console.log(firebaseApp.auth().currentUser);
     return (
       <View style={styles.container}>
         <ListView

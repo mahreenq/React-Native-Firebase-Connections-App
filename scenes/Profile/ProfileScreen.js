@@ -5,7 +5,6 @@ import {Gravatar, GravatarApi} from 'react-native-gravatar';
 import ActionButton from '../../components/ActionButton';
 import styles from './styles';
 
-
 export default class Profile extends Component {
     static route = {
         navigationBar: {
@@ -13,15 +12,13 @@ export default class Profile extends Component {
           backgroundColor: '#33cccc',
         }
       }
-      
     signOutUser = async () => {
         try {
             await firebase.auth().signOut();
-        } catch (e) {
-            console.log(e);
+        } catch (error) {
+            console.log(error);
         }
     }
-    
     render() { 
         var user = firebase.auth().currentUser;
         return (
