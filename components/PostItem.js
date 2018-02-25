@@ -25,7 +25,7 @@ export default class EventItem extends Component {
             <Text style={styles.eventDateTime}>{item.postedby} </Text>
           </View>
           <View style={{flexDirection: 'row', flexDirection: 'row', alignItems:'center'}}>
-          <Text style={{color:'red' , fontSize:11}}> {liked? liked.length : '0' } </Text>
+          <Text style={{color:'red' , fontSize:11}}> {liked && liked.length >0 ? liked.length : '' } </Text>
           { inArray ?  
             <Icon onPress={this.props.onUnlike}   name='ios-heart' color="red" style={{padding:5}}/> : 
             <Icon onPress={this.props.onLike}  name='ios-heart-outline' color="red"  style={{padding:5}}/>
