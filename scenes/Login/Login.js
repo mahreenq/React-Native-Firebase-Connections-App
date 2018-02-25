@@ -116,6 +116,8 @@ class SignInForm extends Component {
                 onRequestClose={() => this.closeModal()}>
                 <LinearGradient colors={['#196666', '#33cccc', '#196666']} style={styles.gradient} >
 
+                <Text style={{fontSize:25, color:'white', paddingBottom:30,}}> REGISTER </Text>
+
                     <TextFieldInput
                     label='Name'
                     autoCorrect={false}
