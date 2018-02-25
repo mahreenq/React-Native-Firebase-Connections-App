@@ -74,7 +74,7 @@ class SignInForm extends Component {
         if (this.state.loading) {
             return <View><Text> LOADING... </Text></View>
         }
-        return <Button onPress={this.onSignInPress.bind(this)} title="Log in" />;
+        return <Button onPress={this.onSignInPress.bind(this)} color='white' title="Log in" />;
         }
     
     openModal() {
@@ -108,12 +108,13 @@ class SignInForm extends Component {
                     />
                     <Text style={styles.errorTextStyle}>{this.state.error}</Text>
                     {this.renderButtonOrLoading()}
-                    <Button onPress={() => this.openModal()} title="Register" />
+                    <Button onPress={() => this.openModal()} color='white' title="Register" />
 
                 <Modal
                 visible={this.state.modalVisible}
                 animationType={'slide'}
                 onRequestClose={() => this.closeModal()}>
+                <LinearGradient colors={['#196666', '#33cccc', '#196666']} style={styles.gradient} >
 
                     <TextFieldInput
                     label='Name'
@@ -138,9 +139,9 @@ class SignInForm extends Component {
                     onChangeText={password => this.setState({ password })}
                     />
 
-                    <Button onPress={() => this.closeModal()} color="blue"  title="Cancel" />
-                    <Button onPress={this.onRegisterPress.bind(this)} color="blue"  title="Submit" />
-
+                    <Button onPress={() => this.closeModal()} color="white"  title="Cancel" />
+                    <Button onPress={this.onRegisterPress.bind(this)} color="white"  title="Submit" />
+                </LinearGradient>
                 </Modal>
                 </LinearGradient>
             </View>

@@ -6,7 +6,7 @@ const TextFieldInput = ({ label, value, onChangeText, placeholder, secureTextEnt
 const { loginInputStyle, labelStyle, loginContainer } = styles;
 return (
         <View style={loginContainer}>
-            <Text style={{fontSize:22, color:'#2eb8b8', marginLeft:20}}>{label}</Text>
+            <Text style={{fontSize:22, color:'white', marginLeft:20}}>{label}</Text>
             <TextInput
                 autoCorrect={false}
                 placeholder={placeholder}
