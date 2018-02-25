@@ -9,12 +9,11 @@
 <h2> To View </h2>
 
 <p> Download the repo, run: </p>
-```bash
-npm install
-```
-```bash
-react-native run-ios
-```
+
+<ul>
+<li>npm install</li>
+<li>react-native run-ios</li>
+</ul>
 
 <br>
 <br>
