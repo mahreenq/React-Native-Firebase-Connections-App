@@ -32,7 +32,7 @@ export default class EventItem extends Component {
           </View>
 
         <View style={{flexDirection: 'row', flexDirection: 'row', alignItems:'center'}}>
-        <Text style={{color:'#1f7a7a' , fontSize:11, paddingLeft:3}}> {rsvp? rsvp.length : '0' } </Text>
+        <Text style={{color:'#1f7a7a' , fontSize:11, paddingLeft:3}}> {rsvp  && rsvp.length > 0? rsvp.length : '' } </Text>
         { inArray ?
           <Icon onPress={this.props.onUnRsvp}  name='checkmark' color="#00e600" style={{padding:5}}/> : 
           <Text onPress={this.props.onRsvp} style={{color:'#1f7a7a', padding:1}}> RSVP </Text>
