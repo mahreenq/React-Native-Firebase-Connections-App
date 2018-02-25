@@ -33,7 +33,7 @@ render() {
 currentUser=firebase.auth().currentUser;
 
     // The application is initialising
-    if (this.state.loading) return <Text> LOADING... </Text>;
+    if (this.state.loading) return <Text style={{fontSize:40, color:'#2eb8b8', paddingBottom:30, paddingTop:250, textAlign:'center'}}> LOADING... </Text>;
     // The user is an Object, so they're logged in
     if (this.state.user) return(
       <NavigationProvider router ={Router} currentUser={currentUser}  >
