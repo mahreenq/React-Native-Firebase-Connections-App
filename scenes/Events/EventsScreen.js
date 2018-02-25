@@ -169,10 +169,10 @@ export default class EventsScreen extends Component {
       _renderItem(item) {
         const onPress = () => {
           AlertIOS.alert(
-            'Complete',
+            'Remove?',
             null,
             [
-            {text: 'Complete', onPress: (text) => this.itemsRef.child(item._key).remove()},
+            {text: 'Remove', onPress: (text) => this.itemsRef.child(item._key).remove()},
             {text: 'Cancel', onPress: (text) => console.log('Cancelled')}
             ]
           );
