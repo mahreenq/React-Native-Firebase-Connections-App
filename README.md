@@ -12,6 +12,7 @@
 <ul>
 <li>npm install</li>
 <li>react-native run-ios</li>
+<li> You will need to log in or register </li>
 </ul>
 
 <br>
