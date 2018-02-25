@@ -5,7 +5,17 @@
 <br>
 
 <p> Firebase is the platform used for authentication and storing data. Profile images are rendered using Gravatar and Icons are rendered using Ionicons.</p>
-<p> To view, download, run 'react-native run-ios'.</p>
+
+<h2> To View </h2>
+
+<p> Download the repo, run: </p>
+```bash
+npm install
+```
+```bash
+react-native run-ios
+```
+
 <br>
 <br>
-<img src="assets/screenshots/connectionsscreenshots.jpg">
+<img src="assets/screenshots/connectionsscreenshots.png">
