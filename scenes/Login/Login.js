@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Button, Modal } from 'react-native';
 import firebase from 'firebase';
 import TextFieldInput from '../../components/TextFieldInput';
+import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles.js';
 
 
@@ -86,8 +87,9 @@ class SignInForm extends Component {
 
     render() {
         return (
-            <View style={styles.logInContainer}>
-                <Text style={{fontSize:40, color:'#2eb8b8', paddingBottom:30,}}> CONNECTIONS </Text>
+            <View style={styles.logInContainer} >
+            <LinearGradient colors={['#70dbdb', '#33cccc', '#196666']} style={styles.gradient} >
+                <Text style={{fontSize:40, color:'white', paddingBottom:30,}}> CONNECTIONS </Text>
 
                 <TextFieldInput
                     label='Email Address'
@@ -140,6 +142,7 @@ class SignInForm extends Component {
                     <Button onPress={this.onRegisterPress.bind(this)} color="blue"  title="Submit" />
 
                 </Modal>
+                </LinearGradient>
             </View>
         );
     }

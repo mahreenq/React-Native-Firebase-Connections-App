@@ -17,6 +17,15 @@ errorTextStyle: {
       flexDirection:'column',
       alignItems:'center',
       justifyContent: 'center',
+    },
+    gradient:{
+      height: height,
+      width:width,
+      flex: 1,
+      flexDirection:'column',
+      alignItems:'center',
+      justifyContent: 'center',
+
     }
 });
 export default styles;
