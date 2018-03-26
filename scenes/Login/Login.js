@@ -15,6 +15,7 @@ class SignInForm extends Component {
             email: '', 
             password: '', 
             error: '', 
+            bio:'',
             loading: false,
             modalVisible: false,
             dataSource:[],
@@ -33,6 +34,7 @@ class SignInForm extends Component {
             users.push({
                 name: child.val().name,
                 email: child.val().email,
+                bio: child.val().bio,
                 _key: child.key
                 });
             });
@@ -60,10 +62,15 @@ class SignInForm extends Component {
                 firebase.auth().createUserWithEmailAndPassword(email, password)
                     .then((success) => { success.updateProfile({displayName: this.state.name}) 
                      this.setState({ error: '', loading: false })
-                     this.itemsRef.push({
+
+                     var uid = firebase.auth().currentUser.uid;
+                     firebase.database().ref().child('users').child(uid).set({
                         name: this.state.name,
-                        email: this.state.email,
-                      });
+                        email: this.state.email.toLowerCase(),
+                        bio: this.state.bio,
+                        userId: uid
+                     })
+
                 })
                     .catch(() => {
                     this.setState({ error: 'Authentication failed.', loading: false });
@@ -140,6 +147,13 @@ class SignInForm extends Component {
                     value={this.state.password}
                     onChangeText={password => this.setState({ password })}
                     />
+                 <TextFieldInput
+                    label='Bio'
+                    autoCorrect={false}
+                    placeholder='Add a short bio'
+                    value={this.state.bio}
+                    onChangeText={bio => this.setState({ bio })}
+                    />
 
                     <Button onPress={() => this.closeModal()} color="white"  title="Cancel" />
                     <Button onPress={this.onRegisterPress.bind(this)} color="white"  title="Submit" />
@@ -151,3 +165,12 @@ class SignInForm extends Component {
     }
 }
 export default SignInForm;
+
+
+// var uid = firebase.auth().currentUser.uid;
+// firebase.database().ref().child('users').child(uid).set({
+//     name: this.state.name,
+//     email: this.state.email.toLowerCase(),
+//     bio: this.state.bio,
+//     userId: uid
+// })

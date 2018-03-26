@@ -34,6 +34,7 @@ export default class ConnectionsScreen extends Component {
         users.push({
             name:child.val().name,
             email: child.val().email,
+            bio: child.val().bio,
             _key: child.key
             });
         });

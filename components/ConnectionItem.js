@@ -18,7 +18,11 @@ export default class ConnectionItem extends Component {
             secure: true}}
             style={styles.roundedProfileImage} />
 
+          <View>
           <Text style={{fontSize:20, color:'white', paddingLeft:10}}> {user.name}</Text>
+          <Text style={{fontSize:10, color:'white', paddingLeft:10, paddingTop:5}}> {user.bio}</Text>
+
+          </View>
         </View>
       </TouchableHighlight>
     );
